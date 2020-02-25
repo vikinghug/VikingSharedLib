@@ -1,2 +1,2 @@
-# VikingHud WOW Addon
+# VikingSharedLib - WOW Classic
 
