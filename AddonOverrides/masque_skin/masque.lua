@@ -5,16 +5,16 @@ if not MSQ then return end
 
 local LSM = LibStub("LibSharedMedia-3.0")
 
-MSQ:AddSkin("VikingHud", {
-	Author = "VikingHud",
+MSQ:AddSkin("Vikinghug", {
+	Author = "Vikinghug",
 	Version = "1.2.1",
 	Shape = "Square",
 	Masque_Version = 80100,
 	Backdrop = {
 		Width = 36,
 		Height = 36,
-		Color = {addon.Colors:NewRGBA(addon.Colors.BG, 0.8):ToList()},
-		Texture = [[Interface\AddOns\VikingHud\src\AddonOverrides\masque_skin\Textures\PlainBackdrop]],
+		Color = {addon.Colors.BG:ToList(0.8)},
+		Texture = [[Interface\AddOns\VikingSharedLib\AddonOverrides\masque_skin\Textures\PlainBackdrop]],
 	},
 	Icon = {
 		Width = 36,
@@ -24,48 +24,48 @@ MSQ:AddSkin("VikingHud", {
 	Flash = {
 		Width = 36,
 		Height = 36,
-		Color = {addon.Colors:NewRGBA(addon.Colors.RED, 0.3):ToList()},
-		Texture = [[Interface\AddOns\VikingHud\src\AddonOverrides\masque_skin\Textures\Overlay]],
+		Color = {addon.Colors.RED:ToList(0.3)},
+		Texture = [[Interface\AddOns\VikingSharedLib\AddonOverrides\masque_skin\Textures\Overlay]],
 	},
 	Cooldown = {
 		Width = 36,
 		Height = 36,
-		Texture = [[Interface\AddOns\VikingHud\src\AddonOverrides\masque_skin\Textures\Overlay]],
-		Color = {addon.Colors:NewRGBA(addon.Colors.BG, 0.8):ToList()},
+		Texture = [[Interface\AddOns\VikingSharedLib\AddonOverrides\masque_skin\Textures\Overlay]],
+		Color = {addon.Colors.BG:ToList(0.8)},
 	},
 	Pushed = {
 		Width = 36,
 		Height = 36,
-		Color = {addon.Colors:NewRGBA(addon.Colors.BG, 0.5):ToList()},
-		Texture = [[Interface\AddOns\VikingHud\src\AddonOverrides\masque_skin\Textures\Overlay]],
+		Color = {addon.Colors.BG:ToList(0.5)},
+		Texture = [[Interface\AddOns\VikingSharedLib\AddonOverrides\masque_skin\Textures\Overlay]],
 	},
 	Normal = {
 		Width = 36,
 		Height = 36,
-		Color = {addon.Colors:NewRGBA(addon.Colors.BG, 1):ToList()},
-		Texture = [[Interface\AddOns\VikingHud\src\AddonOverrides\masque_skin\Textures\Normal]],
+		Color = {addon.Colors.BG:ToList(1)},
+		Texture = [[Interface\AddOns\VikingSharedLib\AddonOverrides\masque_skin\Textures\Normal]],
 	},
 	Disabled = {
 		-- Hide = true,
 		TexCoords = {0.08,0.92,0.08,0.92},
 		Width = 36,
 		Height = 36,
-		Color = {addon.Colors:NewRGBA(addon.Colors.BG, 1):ToList()},
-		Texture = [[Interface\AddOns\VikingHud\src\AddonOverrides\masque_skin\Textures\Overlay]],
+		Color = {addon.Colors.BG:ToList(1)},
+		Texture = [[Interface\AddOns\VikingSharedLib\AddonOverrides\masque_skin\Textures\Overlay]],
 	},
 	Checked = {
 		Width = 36,
 		Height = 36,
 		BlendMode = "BLEND",
 		Color = {1, 0.8, 0.0, 1},
-		Texture = [[Interface\AddOns\VikingHud\src\AddonOverrides\masque_skin\Textures\Border]],
+		Texture = [[Interface\AddOns\VikingSharedLib\AddonOverrides\masque_skin\Textures\Border]],
 	},
 	Border = {
 		Width = 36,
 		Height = 36,
-		Color = {addon.Colors:NewRGBA(addon.Colors.BG, 0.8):ToList()},
+		Color = {addon.Colors.BG:ToList(0.8)},
 		-- BlendMode = "BLEND",
-		-- Texture = [[Interface\AddOns\VikingHud\src\AddonOverrides\masque_skin\Textures\Normal]],
+		-- Texture = [[Interface\AddOns\VikingSharedLib\AddonOverrides\masque_skin\Textures\Normal]],
 	},
 	AutoCastable = {
 		Width = 60,
@@ -79,7 +79,7 @@ MSQ:AddSkin("VikingHud", {
 		Height = 36,
 		BlendMode = "ADD",
 		Color = {1, 1, 1, 0.1},
-		Texture = [[Interface\AddOns\VikingHud\src\AddonOverrides\masque_skin\Textures\Highlight]],
+		Texture = [[Interface\AddOns\VikingSharedLib\AddonOverrides\masque_skin\Textures\Highlight]],
 	},
 	Gloss = {
 		Hide = true,
@@ -124,7 +124,7 @@ MSQ:AddSkin("VikingHud", {
 
 local function SetFont(self, size)
 	self:SetFont(LSM:Fetch("font", "Montserrat SemiBold"), size)
-	self:SetShadowColor(addon.Colors:NewRGBA(addon.Colors.BG, 0.8))
+	self:SetShadowColor(addon.Colors.BG:ToList(0.8))
 	self:SetShadowOffset(1, -1)
 end
 
@@ -133,10 +133,10 @@ local function SetColors(self, checksRange, inRange)
 	local isUsable, notEnoughMana = IsUsableAction(self.action)
 	if (isUsable == false) then
 		self.HotKey:SetVertexColor(1, 1, 1, 0.25)
-		return self.icon:SetVertexColor(addon.Colors:NewRGBA(addon.Colors.BG, 0.5):ToList())
+		return self.icon:SetVertexColor(addon.Colors.BG:ToList(0.5))
 	elseif (notEnoughMana) then
 		self.HotKey:SetVertexColor(1, 1, 1, 0.25)
-		return self.icon:SetVertexColor(addon.Colors:NewRGBA(addon.Colors.BLUE, 0.45):ToList())
+		return self.icon:SetVertexColor(addon.Colors.BLUE:ToList(0.45))
 	end
 
 	if ( self.HotKey:GetText() == RANGE_INDICATOR ) then
@@ -146,16 +146,16 @@ local function SetColors(self, checksRange, inRange)
 				self.HotKey:SetVertexColor(unpack(WHITE))
 				self.icon:SetVertexColor(unpack(WHITE))
 			else
-				self.HotKey:SetVertexColor(addon.Colors:NewRGBA(addon.Colors.RED, 1):ToList())
-				self.icon:SetVertexColor(addon.Colors:NewRGBA(addon.Colors.RED, 0.25):ToList())
+				self.HotKey:SetVertexColor(addon.Colors.RED:ToList(1))
+				self.icon:SetVertexColor(addon.Colors.RED:ToList(0.25))
 			end
 		else
 			self.HotKey:Hide();
 		end
 	else
 		if ( checksRange and not inRange ) then
-			self.HotKey:SetVertexColor(addon.Colors:NewRGBA(addon.Colors.RED, 1):ToList())
-			self.icon:SetVertexColor(addon.Colors:NewRGBA(addon.Colors.RED, 0.25):ToList())
+			self.HotKey:SetVertexColor(addon.Colors.RED:ToList(1))
+			self.icon:SetVertexColor(addon.Colors.RED:ToList(0.25))
 		else
 			self.HotKey:SetVertexColor(unpack(WHITE))
 			self.icon:SetVertexColor(unpack(WHITE))

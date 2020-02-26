@@ -1,9 +1,10 @@
 local _, addon = ...
-local Colors = {
+local defaultColors = {
   BLACK = { 10, 3, 8 },
   WHITE = { 255, 255, 255 },
   GREY = { 180, 161, 188 },
   DARK_GREY = { 120, 101, 128 },
+  BROWN = { 99, 82, 34 },
   RED = { 242, 51, 80 },
   DARK_RED = { 173, 42, 62 },
   ORANGE = { 242, 115, 45 },
@@ -20,23 +21,8 @@ local Colors = {
   CYAN = { 57, 231, 237 },
   BG = { 30, 11, 38 },
 }
-addon.Colors = Colors
 
-VH_POWER_COLORS = {
-  MANA = Colors.BLUE,
-  ENERGY = Colors.YELLOW,
-  RAGE = Colors.ORANGE
-}
-
-VH_SPELL_SCHOOL_COLORS = {
-  [1] = Colors.YELLOW, --  Physical - bright yellow
-  [2] = Colors.PALE_YELLOW, --  Holy - pale yellow
-  [4] = Colors.ORANGE, --  Fire -- orange
-  [8] = Colors.GREEN, --  Nature -- green
-  [16] = Colors.CYAN, --  Frost -- cyan
-  [32] = Colors.PURPLE, --  Shadow -- purple
-  [64] = Colors.PINK, --  Arcane -- pink
-}
+local Colors = {}; addon.Colors = Colors
 
 -- local function setDefaultColor(t, d)
 --   local mt = { __index = function() return d end }
@@ -58,6 +44,7 @@ end
 
 function Colors:New(r, g, b, a)
   local color = {}
+
   setmetatable(color, {
     __index = Colors
   })
@@ -76,8 +63,8 @@ function Colors:NewRGBA(color, alpha)
   return Colors:New(r, g, b, a)
 end
 
-function Colors:ToList()
-  return self.r, self.g, self.b, self.a
+function Colors:ToList(alpha)
+  return self.r, self.g, self.b, alpha or self.a
 end
 
 function Colors:ToHex()
@@ -103,16 +90,16 @@ end
 local function ConvertBlizzardToVHColor(color)
   local vhColor = {}
   if (color.r == 1 and color.g == 0.1 and color.b == 0.1) then
-    vhColor = Colors.RED
+    vhColor = defaultColors.RED
 
   elseif (color.r == 1 and color.g == 0.5 and color.b == 0.5) then
-    vhColor = Colors.ORANGE
+    vhColor = defaultColors.ORANGE
 
   elseif (color.r == 1 and color.g == 1 and color.b == 0) then
-    vhColor = Colors.YELLOW
+    vhColor = defaultColors.YELLOW
 
   elseif (color.r == 0.25 and color.g == 0.25 and color.b == 0.75) then
-    vhColor = Colors.GREEN
+    vhColor = defaultColors.GREEN
 
   else
     return color.r, color.g, color.b, 1.0
@@ -132,4 +119,8 @@ function Colors:NewDifficultyColor(num)
 
   local color = Colors:New(r, g, b, a)
   return color
+end
+
+for key, value in pairs(defaultColors) do
+  addon.Colors[key] = Colors:NewRGBA(value, 1.0)
 end

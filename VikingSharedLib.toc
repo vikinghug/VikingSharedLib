@@ -1,7 +1,8 @@
 ## Interface: 11303
 ## Title: VikingSharedLib
 ## Notes: A library for the core asset dependencies for the Viking addons
-## Version: 0.1.1
+## Author: Vikinghug
+## Version: 0.1.2
 ## X-Category: Library
 ## X-Email: kevin AT itsthatguy DOT com
 
@@ -13,3 +14,4 @@ assets\fonts\fonts.lua
 assets\sounds\sounds.lua
 assets\textures\textures.lua
 VikingSharedLib.lua
+AddonOverrides\masque_skin\masque.lua
