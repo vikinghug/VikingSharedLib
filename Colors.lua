@@ -114,7 +114,7 @@ local function ConvertBlizzardToVHColor(color)
 end
 
 function Colors:NewDifficultyColor(num)
-  local blizzardColor = GetDifficultyColor(num)
+  local blizzardColor = GetQuestDifficultyColor(num)
   local r, g, b, a = ConvertBlizzardToVHColor(blizzardColor)
 
   local color = Colors:New(r, g, b, a)
