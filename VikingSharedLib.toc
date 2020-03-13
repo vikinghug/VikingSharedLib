@@ -2,7 +2,7 @@
 ## Title: VikingSharedLib
 ## Notes: A library for the core asset dependencies for the Viking addons
 ## Author: Vikinghug
-## Version: 0.1.4
+## Version: 0.1.5-alpha
 ## X-Category: Library
 ## X-Email: kevin AT itsthatguy DOT com
 
