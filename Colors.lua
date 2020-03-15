@@ -5,6 +5,7 @@ local defaultColors = {
   GREY = { 180, 161, 188 },
   DARK_GREY = { 120, 101, 128 },
   BROWN = { 99, 82, 34 },
+  LIGHT_BROWN = { 173, 130, 90 },
   RED = { 242, 51, 80 },
   DARK_RED = { 173, 42, 62 },
   ORANGE = { 242, 115, 45 },
