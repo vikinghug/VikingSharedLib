@@ -13,42 +13,42 @@ VH_TEXTURES = {
     name = "Druid Icon",
     path = [[Interface\Addons\]] .. folder .. [[druid.tga]],
   },
-  {
+  HUNTER_ICON = {
     type = "background",
     name = "Hunter Icon",
     path = [[Interface\Addons\]] .. folder .. [[hunter.tga]],
   },
-  {
+  MAGE_ICON = {
     type = "background",
     name = "Mage Icon",
     path = [[Interface\Addons\]] .. folder .. [[mage.tga]],
   },
-  {
+  PALADIN_ICON = {
     type = "background",
     name = "Paladin Icon",
     path = [[Interface\Addons\]] .. folder .. [[paladin.tga]],
   },
-  {
+  PRIEST_ICON = {
     type = "background",
     name = "Priest Icon",
     path = [[Interface\Addons\]] .. folder .. [[priest.tga]],
   },
-  {
+  ROGUE_ICON = {
     type = "background",
     name = "Rogue Icon",
     path = [[Interface\Addons\]] .. folder .. [[rogue.tga]],
   },
-  {
+  SHAMAN_ICON = {
     type = "background",
     name = "Shaman Icon",
     path = [[Interface\Addons\]] .. folder .. [[shaman.tga]],
   },
-  {
+  WARLOCK_ICON = {
     type = "background",
     name = "Warlock Icon",
     path = [[Interface\Addons\]] .. folder .. [[warlock.tga]],
   },
-  {
+  WARRIOR_ICON = {
     type = "background",
     name = "Warrior Icon",
     path = [[Interface\Addons\]] .. folder .. [[warrior.tga]],
@@ -59,6 +59,7 @@ VH_TEXTURES = {
     name = "solid",
     path = [[Interface\Addons\]] .. folder .. [[solid.tga]],
   },
+
   STATUSBAR = {
     type = "statusbar",
     name = "slanted dash",
@@ -69,6 +70,25 @@ VH_TEXTURES = {
     name = "slanted dash right",
     path = [[Interface\Addons\]] .. folder .. [[status-bar-right.tga]]
   },
+
+  X_ICON = {
+    type = "background",
+    name = "x icon",
+    path = [[Interface\Addons\]] .. folder .. [[x.tga]]
+  },
+
+  TRASH_ICON = {
+    type = "background",
+    name = "trash icon",
+    path = [[Interface\Addons\]] .. folder .. [[trash.tga]]
+  },
+
+  CHANNEL_ICON = {
+    type = "background",
+    name = "channel icon",
+    path = [[Interface\Addons\]] .. folder .. [[channel.tga]]
+  },
+
 }
 
 -- From SharedMedia
@@ -86,9 +106,17 @@ local SPRITES = {
     sprites = {
       -- col, row
       plus = { 1, 1 },
+      plusFill = { 2, 1 },
       lock = { 1, 2 },
       unlock = { 2, 2 },
       settings = { 3, 3 },
+      trash = { 3, 1 },
+      x = { 1, 3 },
+      edit = { 2, 3 },
+      resize = { 3, 2 },
+      channel = { 4, 3 },
+      expand = { 6, 1 },
+      collapse = { 5, 1 }
     }
   }
 }
@@ -103,6 +131,25 @@ function Sprites:GetSprite(file, name)
   local bottom = ((positions[2]) * sheet.grid) / sheet.height
 
   return sheet.path, {left, right, top, bottom}
+end
+
+function Sprites:GetTextSprite(file, name, color)
+  local sheet = SPRITES[file]
+  local positions = sheet.sprites[name]
+  local left = (positions[1] - 1) * sheet.grid
+  local right = (positions[1]) * sheet.grid
+  local top = (positions[2] - 1) * sheet.grid
+  local bottom = (positions[2]) * sheet.grid
+
+  return "|T" ..
+    sheet.path ..
+    ":0:0:0:0:128:128:" ..
+    left .. ":" ..
+    right .. ":" ..
+    top .. ":" ..
+    bottom ..
+    (color and ":" .. color.r * 255 .. ":" .. color.g * 255 .. ":" .. color.b * 255 or "") ..
+    "|t"
 end
 
 function Sprites:SetSprite(tex, file, name)

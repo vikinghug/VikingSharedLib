@@ -41,16 +41,20 @@ local PrintColors = {
 }
 
 function lib:Print(...)
+  --@debug@
   local n = 0
   (self.name or addonName):gsub(".", function(c) n = n + string.byte(c) end)
   local color = PrintColors[((n - 1) % #PrintColors) + 1]
   print(color .. (self.name or addonName) .. [[:|r]], ...)
+  --@end-debug@
 end
 
 function lib:Debug(strName, tData)
+  --@debug@
   if ViragDevTool_AddData then
     ViragDevTool_AddData(tData, strName)
   end
+  --@end-debug@
 end
 
 function lib:RegisterName(name)

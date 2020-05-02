@@ -10,6 +10,7 @@ local defaultColors = {
   DARK_RED = { 173, 42, 62 },
   ORANGE = { 242, 115, 45 },
   BLUE = { 47, 151, 247 },
+  DARK_BLUE = { 65, 80, 196 },
   PALE_BLUE = { 83, 154, 219 },
   GREEN = { 115, 222, 89 },
   DARK_GREEN = { 65, 172, 49 },
@@ -66,6 +67,15 @@ end
 
 function Colors:ToList(alpha)
   return self.r, self.g, self.b, alpha or self.a
+end
+
+function Colors:ToTable(alpha)
+  return {
+    r = self.r,
+    g = self.g,
+    b = self.b,
+    a = (alpha or self.a)
+  }
 end
 
 function Colors:ToHex()
