@@ -115,8 +115,11 @@ local SPRITES = {
       edit = { 2, 3 },
       resize = { 3, 2 },
       channel = { 4, 3 },
+      show = { 4, 2 },
+      hide = { 5, 2 },
       expand = { 6, 1 },
-      collapse = { 5, 1 }
+      collapse = { 5, 1 },
+      hamburger = { 5, 3 },
     }
   }
 }
